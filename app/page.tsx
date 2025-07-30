@@ -1,5 +1,6 @@
 // app/page.tsx
 import Script from "next/script";
+import PortfolioHero from "./components/PortfolioHero";
 
 export default function Home() {
   const person = {
@@ -69,6 +70,9 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }}
       />
+
+      {/* Componets */}
+      <PortfolioHero />
     </>
   );
 }
