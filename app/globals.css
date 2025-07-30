@@ -1,15 +1,12 @@
 @import "tailwindcss";
 
+/* -------------------- Theme variables -------------------- */
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* If you use next/font with variables in <body>:
+     --font-geist-sans and --font-geist-mono come from layout.tsx */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +16,88 @@
   }
 }
 
+/* -------------------- Base -------------------- */
+html, body { height: 100%; }
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overscroll-behavior: none;
+
+  /* Choose ONE of these font strategies:
+
+  1) Use Geist from next/font (recommended):
+     (A) In RootLayout, apply geistSans.className on <body>
+         OR
+     (B) If you only set geistSans.variable, uncomment the line below:
+     font-family: var(--font-geist-sans), system-ui, sans-serif;
+
+  2) If you intentionally want Arial across the site, uncomment this:
+     font-family: Arial, Helvetica, sans-serif;
+  */
 }
+
+/* -------------------- priceDown (gaming-style) --------------------
+   Put files here:  /public/pricedown.woff2  (and optional .woff/.otf)
+------------------------------------------------------------------- */
+@font-face {
+  font-family: "priceDown";
+  src:
+    url("/pricedown.woff2") format("woff2"),
+    url("/pricedown.woff") format("woff"),
+    url("/pricedown.otf") format("opentype");
+  font-display: swap;
+  font-weight: 400; /* adjust if you have multiple weights */
+  font-style: normal;
+}
+
+/* Use this class wherever you want priceDown */
+.font-pricedown {
+  font-family: "priceDown", system-ui, sans-serif;
+  font-weight: 400;
+}
+
+/* -------------------- Roboto Slab (footer only) --------------------
+   Ensure the <link> for Roboto Slab is in <head> (index.html or layout)
+------------------------------------------------------------------- */
+.roboto-slab {
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 400;
+}
+.roboto-slab-500 { font-weight: 500; }
+.roboto-slab-600 { font-weight: 600; }
+.roboto-slab-700 { font-weight: 700; }
+
+/* -------------------- Horizontal scroller layout -------------------- */
+.wrapper {
+  position: relative;
+  overflow-x: hidden; /* prevent native x-scrollbar */
+}
+
+.container {
+  display: flex;
+  height: 100svh;          /* safe viewport height on mobile */
+}
+@supports not (height: 100svh) {
+  .container { height: 100vh; }
+}
+
+.container > section {
+  flex: 0 0 100vw;         /* exactly one viewport wide */
+  width: 100vw;
+  height: 100svh;
+  will-change: transform;
+}
+@supports not (height: 100svh) {
+  .container > section { height: 100vh; }
+}
+
+/* Responsive heading helper */
+.h-responsive {
+  font-size: clamp(2rem, 8vw, 7rem);
+  line-height: 1.05;
+}
+
+/* Optional progress bar */
+.mask { width: 0; }
