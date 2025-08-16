@@ -3,6 +3,7 @@ import BlogCard from "../components/BlogCard";
 import { Card } from "@/components/ui/card";
 import Head from "next/head";
 import BlogSearch from "../components/BlogSearch";
+import TitleAndDescription from "../components/TitleAndDescription";
 //TODO:  SYNC from my blog application (contentbanao)
 
 // Next.js configuration export, not a variable . for ISR (Incremental Static Regeneration).
@@ -26,8 +27,8 @@ export default async function BlogsPage() {
     <>
       <Head>
         <title>
-          Blogs & Tutorials by Mayur Pal | thissidemayur – Web3, Full Stack &
-          DevOps Freelancer
+          Blogs & Tutorials by Mayur Pal | Mayur | thissidemayur – Web3, Full
+          Stack & DevOps Freelancer
         </title>
 
         <meta
@@ -71,13 +72,11 @@ export default async function BlogsPage() {
 
       {/* -------------------------------------------------- content -------------------------------------------------- */}
       <div className="flex-col gap-y-10 mb-10 mt-5">
-        <h1 className="text-3xl font-semibold text-center">
-          Insights & Articles
-        </h1>
-        <p className="text:xs md:text-sm text-muted-foreground text-center text-wrap ">
-          Sharing my journey, technical deep-dives, and lessons from building
-          SaaS apps, exploring Web3, and mastering DevOps.
-        </p>
+        <TitleAndDescription
+          title="Insights & Articles"
+          description=" Sharing my journey, technical deep-dives, and lessons from building
+          SaaS apps, exploring Web3, and mastering DevOps."
+        />
 
         {/* Search Bar */}
         <div className="my-3 px-5">

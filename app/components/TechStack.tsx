@@ -13,7 +13,7 @@ export default function TechStack() {
     <ScrollArea className="w-full h-[500px]">
       <Card>
         <div className="text-center">
-          <CardTitle className="md:text-5xl font-bold text-gray-800 text-2xl">
+          <CardTitle className="md:text-5xl font-bold dark:text-slate-300 text-slate-700 text-2xl">
             Tech Stack
           </CardTitle>
           <CardDescription className="text-muted-foreground text-xs sm:text-sm md:text-lg mt-1">
