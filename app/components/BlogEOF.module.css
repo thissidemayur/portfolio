@@ -1,0 +1,36 @@
+.blogEof {
+  text-align: center;
+  margin: 3rem 0;
+  font-family: "Courier New", monospace;
+  font-size: 1rem;
+  color: #555;
+  position: relative;
+}
+
+.blogEof span {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 2px dashed #aaa;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+}
+
+/* Optional horizontal lines */
+.blogEof::before,
+.blogEof::after {
+  content: "";
+  display: block;
+  width: 30%;
+  height: 1px;
+  background: #ccc;
+  position: absolute;
+  top: 50%;
+}
+
+.blogEof::before {
+  left: 0;
+}
+
+.blogEof::after {
+  right: 0;
+}
