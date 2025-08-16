@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { dateFormatter } from "@/lib/intelAPI";
+import { dateFormatter } from "@/lib/intlAPI";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,7 +27,7 @@ export default function BlogCard({
   return (
     <Card className="py-0 gap-y-0 rounded-none rounded-t-xl ">
       <Link
-        href={`${process.env.NEXT_PUBLIC_BASE_URL}/${slug}`}
+        href={`${process.env.NEXT_PUBLIC_BASE_URL}/blog/${slug}`}
         className=" relative h-56 w-full pointer-coarse rounded-t-xl "
       >
         <Image
@@ -43,7 +43,7 @@ export default function BlogCard({
       </div>
 
       <div className="flex-col gap-y-4 px-3  leading-tight  ">
-        <Link href={`${process.env.NEXT_PUBLIC_BASE_URL}/${slug}`}>
+        <Link href={`${process.env.NEXT_PUBLIC_BASE_URL}/blog/${slug}`}>
           <h2 className=" text-xl font-medium hover:underline hover:decoration-1 hover:decoration-muted-foreground transition-all py-2 text-start">
             {title}{" "}
           </h2>
@@ -62,7 +62,7 @@ export default function BlogCard({
 
         <div className=" flex justify-between items-center mb-4 ">
           <Link
-            href={`${process.env.NEXT_PUBLIC_BASE_URL}/${slug}`}
+            href={`${process.env.NEXT_PUBLIC_BASE_URL}/blog/${slug}`}
             className="flex gap-x-2 hover:underline"
           >
             Read more
