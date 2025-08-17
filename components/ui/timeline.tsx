@@ -11,16 +11,19 @@ import { Card, CardContent, CardDescription, CardTitle } from "./card";
 interface TimelineEntry {
   title: string;
   content: React.ReactNode;
+  id: string;
 }
 
 export const Timeline = ({
   data,
   title,
   description,
+  id,
 }: {
   data: TimelineEntry[];
   title?: string;
   description?: string;
+  id: string;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -44,7 +47,7 @@ export const Timeline = ({
   return (
     <Card className="w-full  font-sans md:px-10 my-10" ref={containerRef}>
       <div className="text-center">
-        <CardTitle className="md:text-5xl font-bold text-gray-800 text-2xl inline">
+        <CardTitle className="md:text-5xl font-bold dark:text-slate-300 text-slate-700  text-2xl inline">
           {title}
         </CardTitle>
         <CardDescription className="text-muted-foreground text-xs sm:text-sm md:text-lg mt-1">
@@ -53,9 +56,9 @@ export const Timeline = ({
       </div>
       <CardContent className="my-0 py-0">
         <div ref={ref} className="relative max-w-7xl mx-auto pb-10">
-          {data.map((item, index) => (
+          {data.map((item) => (
             <div
-              key={index}
+              key={item.id}
               className="flex justify-start pt-10 md:pt-20 md:gap-10"
             >
               <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
