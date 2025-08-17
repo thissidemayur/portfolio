@@ -6,6 +6,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { ImageIcon } from "lucide-react";
 import React from "react";
 
 export default function TechStack() {
@@ -72,6 +73,9 @@ import {
   SiShell,
   SiRust,
   SiReact,
+  SiResend,
+  SiCloudinary,
+  SiAxios,
 } from "react-icons/si";
 
 const skills = [
@@ -88,20 +92,28 @@ const skills = [
   { name: "C++", icon: <SiCplusplus />, color: "#00599c" },
   { name: "C", icon: <SiC />, color: "#a8b9cc" },
   { name: "Python", icon: <FaPython />, color: "#3776ab" },
+  { name: "Golang", icon: <FaGolang />, color: "#00ADD8" },
+  { name: "Rust", icon: <SiRust />, color: "#000000" },
+
+  // Backend & APIs
   { name: "Node.js", icon: <FaNodeJs />, color: "#3c873a" },
   { name: "Express.js", icon: <SiExpress />, color: "#000000" },
+  { name: "JWT", icon: <SiJsonwebtokens />, color: "#000000" },
+  { name: "Socket.io", icon: <SiSocketdotio />, color: "#010101" },
+
+  // State management / frontend tools
   { name: "Redux", icon: <SiRedux />, color: "#764abc" },
   { name: "React Query", icon: <SiReactquery />, color: "#ff4154" },
-  { name: "React Hook Form", icon: <SiReactquery />, color: "#ff4154" }, // no specific icon, reused
-  { name: "Socket.io", icon: <SiSocketdotio />, color: "#010101" },
-  { name: "JWT", icon: <SiJsonwebtokens />, color: "#000000" },
-  { name: "Vite", icon: <SiVite />, color: "#646cff" },
+  { name: "React Hook Form", icon: <SiReactquery />, color: "#ff4154" }, // reused icon
 
   // Cloud & deployment
   { name: "AWS", icon: <SiAwsamplify />, color: "#ff9900" },
   { name: "Vercel", icon: <SiVercel />, color: "#000000" },
   { name: "Nginx", icon: <SiNginx />, color: "#269539" },
   { name: "Appwrite", icon: <SiAppwrite />, color: "#f13c20" },
+  { name: "Resend", icon: <SiResend />, color: "#f472b6" }, // missing before
+  { name: "Cloudinary", icon: <SiCloudinary />, color: "#29A8DF" }, // missing before
+  { name: "ImageKit", icon: <ImageIcon />, color: "#FF6F61" }, // missing before
 
   // Databases
   { name: "PostgreSQL", icon: <SiPostgresql />, color: "#336791" },
@@ -123,30 +135,41 @@ const skills = [
   { name: "Zod", icon: <SiZod />, color: "#6333ff" },
   { name: "Clerk", icon: <SiClerk />, color: "#1c1f23" },
   { name: "Conform", icon: <SiReact />, color: "#FF6B6B" },
-  { name: "Auth.js", icon: <FaKey />, color: "#333333" }, // dark/neutral color
+  { name: "Auth.js", icon: <FaKey />, color: "#333333" },
 
-  // Bottom important skills
-  { name: "Golang", icon: <FaGolang />, color: "#00ADD8" },
-  { name: "Rust", icon: <SiRust />, color: "#000000" },
-
-  { name: "React", icon: <FaReact />, color: "#61dafb" },
-  { name: "Next.js", icon: <SiNextdotjs />, color: "#000000" },
+  // Optional / smaller tools
+  { name: "Axios", icon: <SiAxios />, color: "#5A29E4" },
 ];
 
 function SkillsGrid() {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-4 p-4">
-      {skills.map((skill, index) => (
-        <Button
-          key={index}
-          variant={"outline"}
-          className="hover:scale-105  gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all flex items-center justify-center"
-          style={{ color: skill.color }}
-        >
-          <span className="text-lg">{skill.icon}</span>
-          <span>{skill.name}</span>
-        </Button>
-      ))}
+      {skills.map((skill, index) => {
+        const isDarkIcon =
+          skill.color === "#000000" ||
+          skill.color === "#333333" ||
+          skill.color === "#010101";
+
+        return (
+          <Button
+            key={index}
+            variant="outline"
+            className="hover:scale-105 gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all flex items-center justify-center"
+          >
+            {/* Icon */}
+            <span
+              className={`text-lg ${
+                isDarkIcon ? "dark:text-white text-black" : ""
+              }`}
+              style={{ color: !isDarkIcon ? skill.color : undefined }}
+            >
+              {skill.icon}
+            </span>
+            {/* Label */}
+            <span className="dark:text-white">{skill.name}</span>
+          </Button>
+        );
+      })}
     </div>
   );
 }
