@@ -331,7 +331,13 @@ const CheckIcon = () => {
 // tech stack:
 type StackItemProps = {
   title: string;
-  items: { icon: React.ComponentType<{ className?: string }>; label: string }[];
+  items: {
+    icon: React.ComponentType<{
+      className?: string;
+      style?: React.CSSProperties;
+    }>;
+    label: string;
+  }[];
 };
 
 function StackItem({ title, items }: StackItemProps) {

@@ -33,7 +33,7 @@ export default function TitleAndDescription({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3, delay: 0.8 }}
-        className="relative z-10 mx-auto max-w-xl  text-centertext-sm text-center  sm:text-lg font-normal text-neutral-600 dark:text-neutral-400  py-1"
+        className="relative z-10 mx-auto max-w-xl  text-centertext-sm text-center  sm:text-lg font-normal text-neutral-600 dark:text-neutral-400  py-1 px-0.5 sm:px-0"
       >
         {description}
       </motion.p>
