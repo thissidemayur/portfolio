@@ -130,7 +130,10 @@ function ProjectDemo({
       id: 3,
       title: "CalScheduling",
       content: (
-        <div className="text-muted-foreground text-xs sm:text-sm md:text-lg">
+        <div
+          className="text-muted-foreground text-xs sm:text-sm md:text-lg"
+          key={3}
+        >
           <p className="mb-4  font-normal">
             Event scheduling platform for booking slots, checking availability,
             and video calls.
