@@ -10,7 +10,7 @@ interface SEOProps {
 
 export default function SEO({ title, description, url, image }: SEOProps) {
   const canonical = url || "https://www.thissidemayur.me";
-  const ogImage = image || "/og-img.png";
+  const ogImage = image || "/og.png";
 
   return (
     <Head>
