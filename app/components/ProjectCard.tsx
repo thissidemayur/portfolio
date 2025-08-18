@@ -1,3 +1,5 @@
+"use client";
+import { motion } from "framer-motion";
 import React from "react";
 import Image from "next/image";
 
@@ -26,7 +28,10 @@ export default function ProjectCard({
   return (
     <>
       {/* ----------------------------content ----------------------------------- */}
-      <div
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
         className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${className}`}
       >
         {/* Left Card with Image */}
@@ -81,7 +86,6 @@ export default function ProjectCard({
             </div>
           </div>
         </a>
-
         {/* Right Text Content */}
         <div className="flex flex-col justify-center px-5 lg:p-0">
           <h3 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
@@ -133,7 +137,7 @@ export default function ProjectCard({
             ))}
           </ul>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }
