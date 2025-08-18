@@ -95,7 +95,7 @@ export const PixelImage = ({
         <div
           key={index}
           className={cn(
-            "absolute inset-0 transition-all ease-out",
+            "absolute inset-0 transition-all ease-out flex items-center justify-center",
             isVisible ? "opacity-100" : "opacity-0"
           )}
           style={{
