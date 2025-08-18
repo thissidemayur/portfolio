@@ -2,6 +2,9 @@
 import { motion } from "framer-motion";
 import React from "react";
 import Image from "next/image";
+import { FaGithub } from "react-icons/fa";
+import { ArrowRight, ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface ProjectCardProps {
   title: string;
@@ -13,6 +16,7 @@ interface ProjectCardProps {
   highlights: { id: number; text: string }[];
   className?: string;
   id: number;
+  githubLink: string;
 }
 export default function ProjectCard({
   title,
@@ -24,6 +28,7 @@ export default function ProjectCard({
   highlights,
   className,
   id,
+  githubLink,
 }: ProjectCardProps) {
   return (
     <>
@@ -136,6 +141,38 @@ export default function ProjectCard({
               </li>
             ))}
           </ul>
+
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-4">
+            {/* Github Repo */}
+            <Button variant={"link"} asChild>
+              <a
+                href={githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 0 transition-colors hover:cursor-pointer hover:text-blue-500 "
+              >
+                <FaGithub className="text-lg" />
+                <span>Github Repo</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </Button>
+
+            {/* Live Website */}
+            <Button variant={"link"} asChild>
+              <a
+                href={slug}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2hover:cursor-pointer hover:text-blue-500"
+              >
+                <span className="flex gap-x-2 items-center">
+                  {" "}
+                  <ExternalLink className="w-5 h-5" />
+                  Live Website
+                </span>
+              </a>
+            </Button>
+          </div>
         </div>
       </motion.div>
     </>

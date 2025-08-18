@@ -1,6 +1,7 @@
 import React from "react";
 import { Timeline } from "@/components/ui/timeline";
 import Image from "next/image";
+import { Key } from "lucide-react";
 export default function WorkHighlight() {
   return (
     <ProjectDemo
@@ -20,139 +21,166 @@ function ProjectDemo({
   const data = [
     {
       id: 1,
-      title: "Blog App",
+      title: "ContentBanao",
       content: (
-        <div>
-          <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-            Built and launched Aceternity UI and Aceternity UI Pro from scratch
+        <div className="text-muted-foreground text-xs sm:text-sm md:text-lg ">
+          <p className="mb-4  font-normal">
+            Modern SaaS blogging & reel-sharing platform with Next.js 15,
+            TypeScript, Tailwind, Redux Toolkit, NextAuth, and MongoDB.
           </p>
-          <div className="grid grid-cols-2 gap-4">
-            <Image
-              src="/project/contentBanao1.png"
-              alt="startup template"
-              width={500}
-              height={250}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <Image
-              src="/project/contentBanao2.png"
-              alt="startup template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <Image
-              src="/project/contentBanao3.png"
-              alt="startup template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <Image
-              src="/project/contentBanao4.png"
-              alt="startup template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
+          <ul className="list-disc ml-4 mb-4 text-xs font-normal">
+            <li>Modular architecture with Next.js 15 App Router</li>
+            <li>NextAuth with Google OAuth & JWT route protection</li>
+            <li>Dynamic blog creation, comments, and reels</li>
+            <li>CDN media support via ImageKit</li>
+            <li>Responsive, reusable UI components</li>
+          </ul>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2">
+            <div className="flex flex-col gap-4">
+              <Image
+                src="/project/contentBanao1.png"
+                alt="ContentBanao screenshot 1"
+                width={500}
+                height={500}
+                className="w-full rounded-lg object-cover"
+              />
+              <Image
+                src="/project/contentBanao2.png"
+                alt="ContentBanao screenshot 2"
+                width={500}
+                height={500}
+                className="w-full rounded-lg object-cover"
+              />
+            </div>
+            <div className="sm:flex flex-col gap-4 hidden">
+              <Image
+                src="/project/contentBanao3.png"
+                alt="ContentBanao screenshot 3"
+                width={500}
+                height={500}
+                className="w-full rounded-lg object-cover"
+              />
+              <Image
+                src="/project/contentBanao4.png"
+                alt="ContentBanao screenshot 4"
+                width={500}
+                height={500}
+                className="w-full rounded-lg object-cover"
+              />
+            </div>
           </div>
         </div>
       ),
     },
     {
       id: 2,
-      title: "Invoice Generation App",
+      title: "InvoiceBanao",
       content: (
-        <div>
-          <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-            I usually run out of copy, but when I see content this big, I try to
-            integrate lorem ipsum.
+        <div className="text-muted-foreground text-xs sm:text-sm md:text-lg ">
+          <p className="mb-4 font-normal">
+            Full-stack invoice management system with email delivery, reminders,
+            and interactive dashboard.
           </p>
-          <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-            Lorem ipsum is for people who are too lazy to write copy. But we are
-            not. Here are some more example of beautiful designs I built.
-          </p>
-          <div className="grid grid-cols-2 gap-4">
-            <Image
-              src="https://assets.aceternity.com/pro/hero-sections.png"
-              alt="hero template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <Image
-              src="https://assets.aceternity.com/features-section.png"
-              alt="feature template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <Image
-              src="https://assets.aceternity.com/pro/bento-grids.png"
-              alt="bento template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <Image
-              src="https://assets.aceternity.com/cards.png"
-              alt="cards template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
+          <ul className="list-disc ml-4 mb-4 text-xs font-normal">
+            <li>Cookie-based authentication with magic link login</li>
+            <li>Create, edit, delete invoices with PDF generation</li>
+            <li>Send invoices & reminders via email</li>
+            <li>Interactive Recharts graphs dashboard</li>
+            <li>Radix UI + Tailwind for clean, scalable interface</li>
+          </ul>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2">
+            <div className="flex flex-col gap-4">
+              <Image
+                src="/project/contentBanao1.png"
+                alt="ContentBanao screenshot 1"
+                width={500}
+                height={500}
+                className="w-full rounded-lg object-cover"
+              />
+              <Image
+                src="/project/contentBanao2.png"
+                alt="ContentBanao screenshot 2"
+                width={500}
+                height={500}
+                className="w-full rounded-lg object-cover"
+              />
+            </div>
+            <div className=" flex-col gap-4 hidden sm:flex ">
+              {" "}
+              <Image
+                src="/project/contentBanao3.png"
+                alt="ContentBanao screenshot 3"
+                width={500}
+                height={500}
+                className="w-full rounded-lg object-cover"
+              />
+              <Image
+                src="/project/contentBanao4.png"
+                alt="ContentBanao screenshot 4"
+                width={500}
+                height={500}
+                className="w-full rounded-lg object-cover"
+              />
+            </div>
           </div>
         </div>
       ),
     },
-
     {
       id: 3,
-      title: "Calender scheduling App",
+      title: "CalScheduling",
       content: (
-        <div key={3}>
-          <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-            I usually run out of copy, but when I see content this big, I try to
-            integrate lorem ipsum.
+        <div className="text-muted-foreground text-xs sm:text-sm md:text-lg">
+          <p className="mb-4  font-normal">
+            Event scheduling platform for booking slots, checking availability,
+            and video calls.
           </p>
-          <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-            Lorem ipsum is for people who are too lazy to write copy. But we are
-            not. Here are some more example of beautiful designs I built.
-          </p>
-          <div className="grid grid-cols-2 gap-4">
-            <Image
-              src="https://assets.aceternity.com/pro/hero-sections.png"
-              alt="hero template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <Image
-              src="https://assets.aceternity.com/features-section.png"
-              alt="feature template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <Image
-              src="https://assets.aceternity.com/pro/bento-grids.png"
-              alt="bento template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <Image
-              src="https://assets.aceternity.com/cards.png"
-              alt="cards template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
+          <ul className="list-disc ml-4 mb-4 text-xs font-normal">
+            <li>Create events & book available time slots</li>
+            <li>Integrated video call platform</li>
+            <li>Secure authentication with NextAuth</li>
+            <li>Backend powered by Prisma ORM + PostgreSQL</li>
+            <li>Form validation with Zod & Conform</li>
+          </ul>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2">
+            <div className="flex flex-col gap-4">
+              <Image
+                src="/project/contentBanao1.png"
+                alt="ContentBanao screenshot 1"
+                width={500}
+                height={500}
+                className="w-full rounded-lg object-cover"
+              />
+              <Image
+                src="/project/contentBanao2.png"
+                alt="ContentBanao screenshot 2"
+                width={500}
+                height={500}
+                className="w-full rounded-lg object-cover"
+              />
+            </div>
+            <div className=" flex-col gap-4 hidden sm:flex ">
+              <Image
+                src="/project/contentBanao3.png"
+                alt="ContentBanao screenshot 3"
+                width={500}
+                height={500}
+                className="w-full rounded-lg object-cover"
+              />
+              <Image
+                src="/project/contentBanao4.png"
+                alt="ContentBanao screenshot 4"
+                width={500}
+                height={500}
+                className="w-full rounded-lg object-cover"
+              />
+            </div>
           </div>
         </div>
       ),
     },
   ];
+
   return (
     <div className="relative w-full overflow-clip">
       <Timeline data={data} description={description} title={title} />

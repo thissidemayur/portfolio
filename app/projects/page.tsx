@@ -1,6 +1,5 @@
 import React from "react";
 import ProjectCard from "../components/ProjectCard";
-import Head from "next/head";
 import { CardHeader } from "@/components/ui/card";
 import TitleAndDescription from "../components/TitleAndDescription";
 import SEO from "../components/SEO";
@@ -14,14 +13,15 @@ interface ProjectCardProps {
   highlights: { id: number; text: string }[];
   className?: string;
   id: number;
+  githubLink: string;
 }
-export const projectList: ProjectCardProps[] = [
+const projectList: ProjectCardProps[] = [
   {
     id: 1,
     title: "ContentBanao",
     description:
       "A modern, SaaS-style blogging and reel-sharing platform built with Next.js 15, TypeScript, Tailwind, Redux Toolkit, NextAuth, and MongoDB. Users can write blogs, upload reels, and interact in a clean, scalable environment.",
-    slug: "content-banao",
+    slug: "https://contentbanao.vercel.app/",
     coverImage: "/project/contentBanao1.png",
     coverTitle: "Blogging platform to create, read, share, like, and comment",
     techStack: [
@@ -44,13 +44,14 @@ export const projectList: ProjectCardProps[] = [
       { id: 5, text: "Fully responsive UI with reusable components" },
     ],
     className: "",
+    githubLink: "https://github.com/thissidemayur/ContentBanao",
   },
   {
     id: 2,
     title: "InvoiceBanao",
     description:
       "A full-stack invoice management system to create, send, and manage invoices with email delivery, reminders, and an interactive dashboard.",
-    slug: "invoice-banao",
+    slug: "https://invoicebanao.vercel.app/",
     coverImage: "/project/invoiceBanao.png",
     coverTitle: "Manage, generate, and send invoices with email and PDFs",
     techStack: [
@@ -72,6 +73,7 @@ export const projectList: ProjectCardProps[] = [
       { id: 5, text: "Radix UI + Tailwind for clean and scalable UI" },
     ],
     className: "invoice-banao",
+    githubLink: "https://github.com/thissidemayur/invoiceBanao-nextjs",
   },
   {
     id: 3,
@@ -98,6 +100,7 @@ export const projectList: ProjectCardProps[] = [
       { id: 5, text: "Validation with Zod + Conform" },
     ],
     className: "cal-scheduling",
+    githubLink: "https://github.com/thissidemayur/CalScheduling-nextjs",
   },
 ];
 
@@ -167,6 +170,7 @@ export default function ProjectsPage() {
                 techStack={project.techStack}
                 highlights={project.highlights}
                 id={project.id}
+                githubLink={project.githubLink}
               />
             </li>
           ))}
