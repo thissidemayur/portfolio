@@ -11,7 +11,7 @@ export default function Mayur() {
   return (
     <Card className="flex-row justify-evenly items-center mb-10">
       <div className="max-w-md space-y-4">
-        <div className=" sm:hidden flex justify-center">
+        <div className=" sm:hidden flex justify-center items-center">
           <PixelImage
             src="/mayur.jpeg"
             customGrid={{ rows: 4, cols: 6 }}
@@ -64,7 +64,7 @@ export default function Mayur() {
           </Button>
         </motion.div>
       </div>
-      <div className="hidden sm:block">
+      <div className="hidden sm:block f">
         <PixelImage
           src="/mayur.jpeg"
           customGrid={{ rows: 4, cols: 6 }}
