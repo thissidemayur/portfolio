@@ -35,7 +35,7 @@ const Internships: iInternship[] = [
     duration: "Coming Soon",
     description:
       "This section will highlight real-world work experience, roles, and contributions once added. (check below training & Bootcamp section)",
-    imageUrl: "/de",
+    imageUrl: "/expiernce/swInternshup.png",
   },
 ];
 
@@ -53,7 +53,7 @@ const Trainings: iTraining[] = [
 
 export default function Experience() {
   return (
-    <div>
+    <div className="my-10">
       {/* Header */}
       <TitleAndDescription
         title="Internships & Experience"
@@ -91,9 +91,11 @@ export default function Experience() {
                   {/* Text Details */}
                   <div className="w-full md:w-1/2">
                     <h3 className="text-2xl font-semibold">{intern.role}</h3>
-                    <p className="text-gray-600">{intern.company}</p>
-                    <p className="text-sm text-gray-500">{intern.duration}</p>
-                    <p className="mt-4 leading-relaxed text-gray-700">
+                    <p className="text-muted-foreground">{intern.company}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {intern.duration}
+                    </p>
+                    <p className="mt-4 leading-relaxed text-muted-foreground">
                       {intern.description}
                     </p>
                     {intern.proofUrl && (
@@ -142,9 +144,11 @@ export default function Experience() {
                   {/* Text Details */}
                   <div className="w-full md:w-1/2">
                     <h3 className="text-2xl font-semibold">{train.title}</h3>
-                    <p className="text-gray-600">{train.provider}</p>
-                    <p className="text-sm text-gray-500">{train.duration}</p>
-                    <p className="mt-4 leading-relaxed text-gray-700">
+                    <p className="text-muted-foreground">{train.provider}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {train.duration}
+                    </p>
+                    <p className="mt-4 leading-relaxed text-muted-foreground">
                       {train.description}
                     </p>
                     {train.proofUrl && (
@@ -169,7 +173,7 @@ export default function Experience() {
         <h3 className="text-2xl font-semibold mb-4">
           Let’s build impactful software together
         </h3>
-        <p className="text-gray-600 mb-6 leading-relaxed">
+        <p className="text-muted-foreground  mb-6 leading-relaxed">
           I’m continuously gaining hands-on experience through trainings,
           projects, and upcoming internships. Open to opportunities where I can
           apply my skills and grow further.

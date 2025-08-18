@@ -32,7 +32,7 @@ export default function ContactPage() {
         />
       </Head>
 
-      <main className="min-h-screen bg-gray-50 dark:bg-slate-900 py-12 px-4 sm:px-6 lg:px-8">
+      <main className="min-h-screen  py-12 px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-bold text-center mb-8 text-gray-700 dark:text-slate-300">
           Contact Me
         </h1>

@@ -1,18 +1,16 @@
 // app/certifications/page.tsx
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { FaHackerrank } from "react-icons/fa";
-import { SiCoursera, SiPostman, SiCodechef, SiGo } from "react-icons/si";
+import { SiCoursera, SiPostman, SiCodechef } from "react-icons/si";
 
 import TitleAndDescription from "../components/TitleAndDescription";
 import { JSX } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import Head from "next/head";
 
 interface iCertification {
   title: string;
@@ -93,7 +91,7 @@ const Certifications: iCertification[] = [
 
 export default function Certification() {
   return (
-    <div className="">
+    <div className="my-10">
       {/* Header */}
       <TitleAndDescription
         title="Certifications & Achievements"
@@ -128,13 +126,13 @@ export default function Certification() {
                 {/* Certificate Content */}
                 <div className="mt-4 md:mt-0 flex-1">
                   <h2 className="text-xl font-semibold">{certificate.title}</h2>
-                  <div className="md:flex md:justify-between md:items-center text-sm text-gray-500 mt-2">
+                  <div className="md:flex md:justify-between md:items-center text-sm text-muted-foreground mt-2">
                     <span>{certificate.date}</span>
                     <span className="flex gap-1 items-center justify-end text-left mt-2 md:mt-0">
                       ~by {certificate.icon} {certificate.provider}
                     </span>
                   </div>
-                  <p className="mt-3 text-gray-700">
+                  <p className="mt-3 text-muted-foreground">
                     {certificate.description}
                   </p>
                   <Link
@@ -156,7 +154,7 @@ export default function Certification() {
         <h3 className="text-2xl font-semibold mb-4">
           Want to collaborate or discuss opportunities?
         </h3>
-        <p className="text-gray-600 mb-6">
+        <p className="text-muted-foreground mb-6  px-1 sm:px-0">
           These certifications represent my dedication to learning and
           engineering high-quality solutions. Let’s connect and build something
           impactful together.
