@@ -1,37 +1,10 @@
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { ShimmerButton } from "@/components/magicui/shimmer-button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import React from "react";
 import GitHubCalendar from "react-github-calendar";
 import { FaGithub } from "react-icons/fa6";
-const theme = {
-  level0: "#ebedf0",
-  level1: "#c6e48b",
-  level2: "#7bc96f",
-  level3: "#239a3b",
-  level4: "#196127",
-  text: "#000",
-};
-const labels = {
-  months: [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ],
-  weekdays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-  totalCount: "{{count}} contributions in {{year}}",
-  legend: { less: "Less", more: "More" },
-};
+
 export default function GithubContributionGraph() {
   return (
     <Card className="relative  overflow-hidden w-full flex justify-center items-center mt-10 mb-10 ">

@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 
 type Grid = {
@@ -104,7 +105,8 @@ export const PixelImage = ({
             transitionDuration: `${pixelFadeInDuration}ms`,
           }}
         >
-          <img
+          <Image
+            fill
             src={src}
             alt={`Pixel image piece ${index + 1}`}
             className={cn(

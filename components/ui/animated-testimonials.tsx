@@ -3,8 +3,7 @@
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
-
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 type Testimonial = {
   quote: string;
@@ -12,6 +11,7 @@ type Testimonial = {
   designation: string;
   src: string;
 };
+
 export const AnimatedTestimonials = ({
   testimonials,
   autoplay = false,
@@ -21,31 +21,30 @@ export const AnimatedTestimonials = ({
 }) => {
   const [active, setActive] = useState(0);
 
-  const handleNext = () => {
+  // ✅ useCallback to avoid re-creating functions
+  const handleNext = useCallback(() => {
     setActive((prev) => (prev + 1) % testimonials.length);
-  };
+  }, [testimonials.length]);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
+  }, [testimonials.length]);
 
-  const isActive = (index: number) => {
-    return index === active;
-  };
+  const isActive = useCallback((index: number) => index === active, [active]);
 
   useEffect(() => {
     if (autoplay) {
       const interval = setInterval(handleNext, 5000);
       return () => clearInterval(interval);
     }
-  }, [autoplay]);
+  }, [autoplay, handleNext]); // ✅ now safe
 
-  const randomRotateY = () => {
-    return Math.floor(Math.random() * 21) - 10;
-  };
+  const randomRotateY = () => Math.floor(Math.random() * 21) - 10;
+
   return (
     <div className="mx-auto max-w-sm px-4 py-20 font-sans antialiased md:max-w-4xl md:px-8 lg:px-12">
       <div className="relative grid grid-cols-1 gap-20 md:grid-cols-2">
+        {/* Images */}
         <div>
           <div className="relative h-80 w-full">
             <AnimatePresence>
@@ -74,10 +73,7 @@ export const AnimatedTestimonials = ({
                     z: 100,
                     rotate: randomRotateY(),
                   }}
-                  transition={{
-                    duration: 0.4,
-                    ease: "easeInOut",
-                  }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
                   className="absolute inset-0 origin-bottom"
                 >
                   <Image
@@ -93,25 +89,15 @@ export const AnimatedTestimonials = ({
             </AnimatePresence>
           </div>
         </div>
+
+        {/* Text + Controls */}
         <div className="flex flex-col justify-between py-4">
           <motion.div
             key={active}
-            initial={{
-              y: 20,
-              opacity: 0,
-            }}
-            animate={{
-              y: 0,
-              opacity: 1,
-            }}
-            exit={{
-              y: -20,
-              opacity: 0,
-            }}
-            transition={{
-              duration: 0.2,
-              ease: "easeInOut",
-            }}
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -20, opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
           >
             <h3 className="text-2xl font-bold text-black dark:text-white">
               {testimonials[active].name}
@@ -123,16 +109,8 @@ export const AnimatedTestimonials = ({
               {testimonials[active].quote.split(" ").map((word, index) => (
                 <motion.span
                   key={index}
-                  initial={{
-                    filter: "blur(10px)",
-                    opacity: 0,
-                    y: 5,
-                  }}
-                  animate={{
-                    filter: "blur(0px)",
-                    opacity: 1,
-                    y: 0,
-                  }}
+                  initial={{ filter: "blur(10px)", opacity: 0, y: 5 }}
+                  animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
                   transition={{
                     duration: 0.2,
                     ease: "easeInOut",
@@ -145,6 +123,8 @@ export const AnimatedTestimonials = ({
               ))}
             </motion.p>
           </motion.div>
+
+          {/* Buttons */}
           <div className="flex gap-4 pt-12 md:pt-0">
             <button
               onClick={handlePrev}

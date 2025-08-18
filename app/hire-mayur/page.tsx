@@ -38,7 +38,7 @@ export default function HireMePage() {
         />
       </Head>
 
-      <main className="min-h-screen bg-gray-50 dark:bg-slate-900 py-12 px-4 sm:px-6 lg:px-8">
+      <main className="min-h-screen  py-12 px-4 sm:px-6 lg:px-8">
         <HireMe />
       </main>
     </>

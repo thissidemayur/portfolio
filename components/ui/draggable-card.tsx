@@ -6,7 +6,6 @@ import {
   useMotionValue,
   useSpring,
   useTransform,
-  animate,
   useVelocity,
   useAnimationControls,
 } from "motion/react";
@@ -30,9 +29,6 @@ export const DraggableCardBody = ({
     right: 0,
     bottom: 0,
   });
-
-  const velocityX = useVelocity(mouseX);
-  const velocityY = useVelocity(mouseY);
 
   const springConfig = {
     stiffness: 100,

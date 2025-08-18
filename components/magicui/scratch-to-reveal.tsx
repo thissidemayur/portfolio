@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { motion, useAnimation } from "motion/react";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import confetti from "canvas-confetti";
 
 interface ScratchToRevealProps {
@@ -24,7 +24,7 @@ export const ScratchToReveal: React.FC<ScratchToRevealProps> = ({
   className,
   gradientColors = ["#A97CF8", "#F38CB8", "#FDCC92"],
 }) => {
-  const ConfetiCelebreation = () => {
+  const ConfetiCelebreation = useCallback(() => {
     const end = Date.now() + 3 * 1000; // 3 seconds
     const colors = ["#a786ff", "#fd8bbc", "#eca184", "#f8deb1"];
 
@@ -56,7 +56,11 @@ export const ScratchToReveal: React.FC<ScratchToRevealProps> = ({
     if (onComplete) {
       onComplete();
     }
-  };
+  }, [onComplete]);
+
+  const handleScratch = useCallback(() => {
+    ConfetiCelebreation();
+  }, [ConfetiCelebreation]);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isScratching, setIsScratching] = useState(false);
@@ -85,8 +89,74 @@ export const ScratchToReveal: React.FC<ScratchToRevealProps> = ({
     gradient.addColorStop(1, gradientColors[2]);
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-  }, []); // empty dependency array
+  }, [height, gradientColors, width]); // empty dependency array
 
+  const handleMouseDown = () => setIsScratching(true);
+
+  const handleTouchStart = () => setIsScratching(true);
+
+  const canvas = canvasRef.current;
+  const ctx = canvas?.getContext("2d");
+  if (canvas && ctx) {
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+    ctx.scale(dpr, dpr);
+
+    const gradient = ctx.createLinearGradient(0, 0, width, height);
+    gradient.addColorStop(0, gradientColors[0]);
+    gradient.addColorStop(0.5, gradientColors[1]);
+    gradient.addColorStop(1, gradientColors[2]);
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, width, height);
+  }
+
+  const checkCompletion = useCallback(() => {
+    if (isComplete) return;
+
+    const canvas = canvasRef.current;
+    const ctx = canvas?.getContext("2d");
+    if (canvas && ctx) {
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const pixels = imageData.data;
+      const totalPixels = pixels.length / 4;
+      let clearPixels = 0;
+
+      for (let i = 3; i < pixels.length; i += 4) {
+        if (pixels[i] === 0) clearPixels++;
+      }
+
+      const percentage = (clearPixels / totalPixels) * 100;
+      if (percentage >= minScratchPercentage) {
+        setIsComplete(true);
+        ConfetiCelebreation();
+      }
+    }
+  }, [isComplete, minScratchPercentage, ConfetiCelebreation]);
+
+  const scratch = useCallback(
+    (clientX: number, clientY: number) => {
+      const canvas = canvasRef.current;
+      const ctx = canvas?.getContext("2d");
+      if (canvas && ctx) {
+        const rect = canvas.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+
+        const x = (clientX - rect.left) * dpr;
+        const y = (clientY - rect.top) * dpr;
+
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.beginPath();
+        ctx.arc(x, y, 30 * dpr, 0, Math.PI * 2);
+        ctx.fill();
+
+        checkCompletion(); // still safe
+      }
+    },
+    [checkCompletion]
+  );
   useEffect(() => {
     const handleDocumentMouseMove = (event: MouseEvent) => {
       if (!isScratching) return;
@@ -125,74 +195,7 @@ export const ScratchToReveal: React.FC<ScratchToRevealProps> = ({
       document.removeEventListener("touchend", handleDocumentTouchEnd);
       document.removeEventListener("touchcancel", handleDocumentTouchEnd);
     };
-  }, [isScratching]);
-
-  const handleMouseDown = () => setIsScratching(true);
-
-  const handleTouchStart = () => setIsScratching(true);
-
-  const scratch = (clientX: number, clientY: number) => {
-    const canvas = canvasRef.current;
-    const ctx = canvas?.getContext("2d");
-    if (canvas && ctx) {
-      const rect = canvas.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
-
-      // calculate canvas coordinates
-      const x = (clientX - rect.left) * dpr;
-      const y = (clientY - rect.top) * dpr;
-
-      ctx.globalCompositeOperation = "destination-out";
-      ctx.beginPath();
-      ctx.arc(x, y, 30 * dpr, 0, Math.PI * 2); // scale radius for DPR
-      ctx.fill();
-
-      // Check if threshold is reached while scratching
-      checkCompletion();
-    }
-  };
-
-  const canvas = canvasRef.current;
-  const ctx = canvas?.getContext("2d");
-  if (canvas && ctx) {
-    const dpr = window.devicePixelRatio || 1;
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
-    ctx.scale(dpr, dpr);
-
-    const gradient = ctx.createLinearGradient(0, 0, width, height);
-    gradient.addColorStop(0, gradientColors[0]);
-    gradient.addColorStop(0.5, gradientColors[1]);
-    gradient.addColorStop(1, gradientColors[2]);
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, width, height);
-  }
-
-  const checkCompletion = () => {
-    if (isComplete) return;
-
-    const canvas = canvasRef.current;
-    const ctx = canvas?.getContext("2d");
-    if (canvas && ctx) {
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const pixels = imageData.data;
-      const totalPixels = pixels.length / 4;
-      let clearPixels = 0;
-
-      for (let i = 3; i < pixels.length; i += 4) {
-        if (pixels[i] === 0) clearPixels++;
-      }
-
-      const percentage = (clearPixels / totalPixels) * 100;
-
-      if (percentage >= minScratchPercentage) {
-        setIsComplete(true);
-        ConfetiCelebreation();
-      }
-    }
-  };
+  }, [isScratching, checkCompletion, scratch]);
 
   return (
     <motion.div
