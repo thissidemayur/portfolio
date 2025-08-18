@@ -56,7 +56,6 @@ import {
   SiRedux,
   SiSocketdotio,
   SiJsonwebtokens,
-  SiVite,
   SiNginx,
   SiAppwrite,
   SiPostgresql,
@@ -143,7 +142,7 @@ const skills = [
 
 function SkillsGrid() {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-4 p-4">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 p-2">
       {skills.map((skill, index) => {
         const isDarkIcon =
           skill.color === "#000000" ||
@@ -154,11 +153,11 @@ function SkillsGrid() {
           <Button
             key={index}
             variant="outline"
-            className="hover:scale-105 gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all flex items-center justify-center"
+            className="flex items-center justify-center gap-2 px-2 sm:px-3 py-1 sm:py-2 rounded-lg font-semibold text-xs sm:text-sm md:text-sm lg:text-sm transition-all hover:scale-105 truncate"
           >
             {/* Icon */}
             <span
-              className={`text-lg ${
+              className={`text-base sm:text-lg ${
                 isDarkIcon ? "dark:text-white text-black" : ""
               }`}
               style={{ color: !isDarkIcon ? skill.color : undefined }}
@@ -166,7 +165,7 @@ function SkillsGrid() {
               {skill.icon}
             </span>
             {/* Label */}
-            <span className="dark:text-white">{skill.name}</span>
+            <span className="dark:text-white truncate">{skill.name}</span>
           </Button>
         );
       })}
