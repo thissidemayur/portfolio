@@ -1,11 +1,9 @@
 import React from "react";
-import Projects from "../components/ProjectCard";
 import ProjectCard from "../components/ProjectCard";
-import { title } from "process";
 import Head from "next/head";
-import { CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Title } from "@radix-ui/react-dialog";
+import { CardHeader } from "@/components/ui/card";
 import TitleAndDescription from "../components/TitleAndDescription";
+import SEO from "../components/SEO";
 interface ProjectCardProps {
   title: string;
   description: string;
@@ -104,53 +102,77 @@ export const projectList: ProjectCardProps[] = [
 ];
 
 export default function ProjectsPage() {
-  <Head>
-    <meta
-      name="keywords"
-      content="Mayur Pal, thissidemayur, SaaS projects, Web3, DevOps, Full Stack Developer, Freelancer , Mayur, NextJs , MERN, MERN stack,React Project, Nextjs project, mern project "
-    />
-    <title>Projects by Mayur Pal | thissidemayur | Mayur</title>
-    <meta
-      name="description"
-      content="Explore SaaS apps, full stack projects, and open source work by Mayur Pal (thissidemayur) in Web Dev, Web3, and DevOps."
-    />
-    {/* OG Image */}
-    <meta property="og:title" content="Projects by Mayur Pal" />
-    <meta
-      property="og:description"
-      content="SaaS apps, Web3, DevOps, and Full Stack projects built by Mayur Pal (thissidemayur)."
-    />
-    <meta property="og:image" content="/og-projects.png" />
-    <meta property="og:type" content="website" />
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Projects by Mayur Pal",
+    url: "https://thissidemayur.me/projects",
+    itemListElement: projectList.map((project, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `https://thissidemayur.me/projects/projects`,
+      item: {
+        "@type": "SoftwareApplication",
+        name: project.title,
+        image: `https://thissidemayur.me/og-image}`,
+        description: project.description,
+        applicationCategory: "Web Application",
+        keywords: project.techStack.join(", "),
+        author: {
+          "@type": "Person",
+          name: "Mayur Pal",
+          url: "https://thissidemayur.me/about-mayur",
+          sameAs: [
+            "https://www.linkedin.com/in/thissidemayur",
+            "https://github.com/thissidemayur",
+            "https://x.com/thissidemayur",
+            "https://instagram.com/thissidemayur",
+            "https://thissidemayur.me",
+          ],
+        },
+      },
+    })),
+  };
 
-    {/*  */}
-    <meta name="twitter:card" content="summary_large_image" />
-  </Head>;
   return (
-    <div className="mt-5">
-      <CardHeader className="my-10">
-        <TitleAndDescription
-          title="Things I’ve Built"
-          description=" A collection of applications, experiments, and tools I’ve built while
+    <>
+      <SEO
+        title="Projects by Mayur Pal | thissidemayur"
+        description="Explore SaaS apps, full stack projects, and open source work by Mayur Pal (thissidemayur) in Web Dev, Web3, and DevOps."
+        url="https://thissidemayur.me/projects"
+        image="https://thissidemayur.me/og-projects.png"
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      <div className="mt-5">
+        <CardHeader className="my-10">
+          <TitleAndDescription
+            title="Things I’ve Built"
+            description=" A collection of applications, experiments, and tools I’ve built while
           learning and growing as a developer."
-        />
-      </CardHeader>
-      <ul className="flex-col md:space-y-30 sm:space-y-20 space-y-10 ">
-        {projectList?.map((project) => (
-          <li key={project.id}>
-            <ProjectCard
-              title={project.title}
-              description={project.description}
-              slug={project.slug}
-              coverImage={project.coverImage}
-              coverTitle={project.coverTitle}
-              techStack={project.techStack}
-              highlights={project.highlights}
-              id={project.id}
-            />
-          </li>
-        ))}
-      </ul>
-    </div>
+          />
+        </CardHeader>
+        <ul className="flex-col md:space-y-30 sm:space-y-20 space-y-10 ">
+          {projectList?.map((project) => (
+            <li key={project.id}>
+              <ProjectCard
+                title={project.title}
+                description={project.description}
+                slug={project.slug}
+                coverImage={project.coverImage}
+                coverTitle={project.coverTitle}
+                techStack={project.techStack}
+                highlights={project.highlights}
+                id={project.id}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }
