@@ -114,7 +114,7 @@ export default function ProjectsPage() {
       item: {
         "@type": "SoftwareApplication",
         name: project.title,
-        image: `https://thissidemayur.me/og-image}`,
+        image: `https://thissidemayur.me/og.png}`,
         description: project.description,
         applicationCategory: "Web Application",
         keywords: project.techStack.join(", "),
@@ -140,7 +140,6 @@ export default function ProjectsPage() {
         title="Projects by Mayur Pal | thissidemayur"
         description="Explore SaaS apps, full stack projects, and open source work by Mayur Pal (thissidemayur) in Web Dev, Web3, and DevOps."
         url="https://thissidemayur.me/projects"
-        image="https://thissidemayur.me/og-projects.png"
       />
 
       <script
@@ -176,3 +175,5 @@ export default function ProjectsPage() {
     </>
   );
 }
+
+//
