@@ -11,7 +11,9 @@ export default function page() {
         url="https://www.thissidemayur.me/certifications"
       />
 
-      <Certification />
+      <div className="mt-20">
+        <Certification />
+      </div>
     </>
   );
 }

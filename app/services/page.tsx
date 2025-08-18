@@ -54,7 +54,9 @@ export default function ServicePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <Service />
+      <div className="mt-20">
+        <Service />
+      </div>
     </>
   );
 }

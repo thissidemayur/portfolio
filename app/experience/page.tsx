@@ -41,7 +41,9 @@ export default function ExperiencePage() {
       </Head>
 
       {/*  */}
-      <Experience />
+      <div className="mt-20">
+        <Experience />
+      </div>
     </>
   );
 }

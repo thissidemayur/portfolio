@@ -58,7 +58,9 @@ export default function AboutPage() {
           }}
         />
       </Head>
-      <About />
+      <div className="mt-20">
+        <About />
+      </div>
     </>
   );
 }

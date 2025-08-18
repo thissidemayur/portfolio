@@ -150,7 +150,7 @@ export default function ProjectsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="mt-5">
+      <div className="mt-20">
         <CardHeader className="my-10">
           <TitleAndDescription
             title="Things I’ve Built"

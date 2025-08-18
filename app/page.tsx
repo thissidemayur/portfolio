@@ -10,7 +10,7 @@ import { CertificateHighlights } from "./components/CertificationHighlight";
 export default function Home() {
   return (
     <>
-      <div className="flex-col gap-y-10 h-full w-full py-6 px-3 mb-10 ">
+      <div className="flex-col gap-y-10 h-full w-full py-6 px-3 mb-3 mt-20 ">
         <Mayur />
         <HeroSection />
         <GithubContributionGraph />
