@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "motion/react";
 import Link from "next/link";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -46,35 +47,53 @@ import { FaTerminal } from "react-icons/fa";
 import { ImageIcon } from "lucide-react";
 import { IconType } from "react-icons/lib";
 import { CardSpotlight } from "@/components/ui/card-spotlight";
+import TitleAndDescription from "./TitleAndDescription";
 
 export default function ServicesPage() {
   return (
     <>
       <section className="min-h-screen px-4 py-10 md:px-8 ">
         {/* Hero */}
+
         <div className="max-w-5xl mx-auto text-center space-y-4">
-          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight">
-            Freelance Services I Offer
-          </h1>
-          <p className="text-muted-foreground">
-            Specialized in <b>SaaS apps</b>, <b>backend development</b> (Node.js
-            & Golang), and <b>full-stack web projects</b>. Built for
-            performance, privacy, and scale.
-          </p>
-          <div className="flex items-center justify-center gap-3">
-            <Badge variant="secondary">SaaS Mindset</Badge>
-            <Badge variant="secondary">On-time Delivery</Badge>
-            <Badge variant="secondary">Privacy-First</Badge>
-          </div>
-          <div className="pt-2">
-            <Button asChild size="lg">
-              <Link href="/hire-me">Hire Me</Link>
-            </Button>
-          </div>
+          <TitleAndDescription
+            title="Freelance Services I Offer"
+            description="Specialized in SaaS apps, backend development (Node.js
+            & Golang), and full-stack web projects. Built for
+            performance, privacy, and scale."
+          />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="flex items-center flex-wrap justify-center gap-3">
+              <Badge variant="secondary" className="px-4">
+                {" "}
+                SaaS Mindset
+              </Badge>
+              <Badge variant="secondary" className="px-4">
+                On-time Delivery
+              </Badge>
+              <Badge variant="secondary" className="px-4">
+                Privacy-First
+              </Badge>
+            </div>
+            <div className="pt-5">
+              <Button asChild size="lg" variant={"outline"}>
+                <Link href="/hire-me">Hire Me</Link>
+              </Button>
+            </div>
+          </motion.div>
         </div>
 
         {/* Services Grid */}
-        <div className="mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12"
+        >
           <CardSpotlightItems
             title="SaaS App Development"
             Icon={FaCubes}
@@ -105,135 +124,148 @@ export default function ServicesPage() {
               "Real-time features (Sockets)",
             ]}
           />
-        </div>
+        </motion.div>
 
-        {/* Tech Stack */}
-        <Card className="max-w-6xl mx-auto mt-12 dark:bg-black">
-          <CardHeader>
-            <h3 className="text-xl font-semibold">Tech I Use</h3>
-            <p className="text-sm text-muted-foreground">
-              Pick the right tool for the job—without over-engineering.
-            </p>
-          </CardHeader>
-          <CardContent>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {/* Frontend */}
-              <StackItem
-                title="Frontend"
-                items={[
-                  { icon: SiNextdotjs, label: "Next.js" },
-                  { icon: SiReact, label: "React" },
-                  { icon: SiTypescript, label: "TypeScript" },
-                  { icon: SiJavascript, label: "JavaScript" },
-                ]}
-              />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          {/* Tech Stack */}
+          <Card className="max-w-6xl mx-auto mt-12 dark:bg-black">
+            <CardHeader>
+              <h3 className="text-xl font-semibold">Tech I Use</h3>
+              <p className="text-sm text-muted-foreground">
+                Pick the right tool for the job—without over-engineering.
+              </p>
+            </CardHeader>
+            <CardContent>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {/* Frontend */}
+                <StackItem
+                  title="Frontend"
+                  items={[
+                    { icon: SiNextdotjs, label: "Next.js" },
+                    { icon: SiReact, label: "React" },
+                    { icon: SiTypescript, label: "TypeScript" },
+                    { icon: SiJavascript, label: "JavaScript" },
+                  ]}
+                />
 
-              {/* Backend */}
-              <StackItem
-                title="Backend"
-                items={[
-                  { icon: SiNodedotjs, label: "Node.js" },
-                  { icon: SiExpress, label: "Express" },
-                  { icon: SiGo, label: "Golang" },
-                ]}
-              />
+                {/* Backend */}
+                <StackItem
+                  title="Backend"
+                  items={[
+                    { icon: SiNodedotjs, label: "Node.js" },
+                    { icon: SiExpress, label: "Express" },
+                    { icon: SiGo, label: "Golang" },
+                  ]}
+                />
 
-              {/* Database */}
-              <StackItem
-                title="Database"
-                items={[
-                  { icon: SiPostgresql, label: "PostgreSQL" },
-                  { icon: SiMongodb, label: "MongoDB" },
-                  { icon: SiPrisma, label: "Prisma" },
-                ]}
-              />
+                {/* Database */}
+                <StackItem
+                  title="Database"
+                  items={[
+                    { icon: SiPostgresql, label: "PostgreSQL" },
+                    { icon: SiMongodb, label: "MongoDB" },
+                    { icon: SiPrisma, label: "Prisma" },
+                  ]}
+                />
 
-              {/* Quality */}
-              <StackItem
-                title="Quality"
-                items={[
-                  { icon: FaCheckCircle, label: "Validation (Zod)" },
-                  { icon: FaCheckCircle, label: "API Testing (Postman)" },
-                  { icon: FaCheckCircle, label: "Git/GitHub Flow" },
-                ]}
-              />
+                {/* Quality */}
+                <StackItem
+                  title="Quality"
+                  items={[
+                    { icon: FaCheckCircle, label: "Validation (Zod)" },
+                    { icon: FaCheckCircle, label: "API Testing (Postman)" },
+                    { icon: FaCheckCircle, label: "Git/GitHub Flow" },
+                  ]}
+                />
 
-              {/* Programming Languages */}
-              <StackItem
-                title="Languages"
-                items={[
-                  { icon: SiC, label: "C" },
-                  { icon: SiCplusplus, label: "C++" },
-                  { icon: SiPython, label: "Python" },
-                  { icon: SiJavascript, label: "JavaScript" },
-                  { icon: SiTypescript, label: "TypeScript" },
-                  { icon: SiGo, label: "Golang" },
-                ]}
-              />
+                {/* Programming Languages */}
+                <StackItem
+                  title="Languages"
+                  items={[
+                    { icon: SiC, label: "C" },
+                    { icon: SiCplusplus, label: "C++" },
+                    { icon: SiPython, label: "Python" },
+                    { icon: SiJavascript, label: "JavaScript" },
+                    { icon: SiTypescript, label: "TypeScript" },
+                    { icon: SiGo, label: "Golang" },
+                  ]}
+                />
 
-              {/* DevOps & Tools */}
-              <StackItem
-                title="DevOps & Tools"
-                items={[
-                  { icon: SiLinux, label: "Linux" },
-                  { icon: SiGit, label: "Git" },
-                  { icon: SiGithub, label: "GitHub" },
-                  { icon: SiGitlab, label: "GitLab" },
-                  { icon: FaTerminal, label: "Shell Scripting" },
-                ]}
-              />
+                {/* DevOps & Tools */}
+                <StackItem
+                  title="DevOps & Tools"
+                  items={[
+                    { icon: SiLinux, label: "Linux" },
+                    { icon: SiGit, label: "Git" },
+                    { icon: SiGithub, label: "GitHub" },
+                    { icon: SiGitlab, label: "GitLab" },
+                    { icon: FaTerminal, label: "Shell Scripting" },
+                  ]}
+                />
 
-              {/* Libraries */}
-              <StackItem
-                title="Libraries"
-                items={[
-                  { icon: SiReacthookform, label: "React Hook Form" },
-                  { icon: SiAxios, label: "Axios" },
-                  { icon: FaCheckCircle, label: "Conform" },
-                  { icon: SiFirebase, label: "Firebase" },
-                  { icon: SiAppwrite, label: "Appwrite" },
-                  { icon: SiSonarqube, label: "Sonner" }, // closest alt
-                  { icon: FaFilePdf, label: "jsPDF" },
-                ]}
-              />
+                {/* Libraries */}
+                <StackItem
+                  title="Libraries"
+                  items={[
+                    { icon: SiReacthookform, label: "React Hook Form" },
+                    { icon: SiAxios, label: "Axios" },
+                    { icon: FaCheckCircle, label: "Conform" },
+                    { icon: SiFirebase, label: "Firebase" },
+                    { icon: SiAppwrite, label: "Appwrite" },
+                    { icon: SiSonarqube, label: "Sonner" }, // closest alt
+                    { icon: FaFilePdf, label: "jsPDF" },
+                  ]}
+                />
 
-              {/* Cloud & Deployment */}
-              <StackItem
-                title="Cloud & Deployment"
-                items={[
-                  { icon: SiVercel, label: "Vercel" },
-                  { icon: SiAmazonwebservices, label: "S3 Bucket" },
-                  { icon: SiResend, label: "Resend" },
-                  { icon: SiCloudinary, label: "Cloudinary" },
-                  { icon: ImageIcon, label: "ImageKit" },
-                ]}
-              />
-            </div>
-          </CardContent>
-        </Card>
+                {/* Cloud & Deployment */}
+                <StackItem
+                  title="Cloud & Deployment"
+                  items={[
+                    { icon: SiVercel, label: "Vercel" },
+                    { icon: SiAmazonwebservices, label: "S3 Bucket" },
+                    { icon: SiResend, label: "Resend" },
+                    { icon: SiCloudinary, label: "Cloudinary" },
+                    { icon: ImageIcon, label: "ImageKit" },
+                  ]}
+                />
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
 
         {/*  */}
 
         {/* Ethos + CTA */}
-        <div className="max-w-4xl mx-auto mt-12 ">
-          <Card className="dark:bg-black">
-            <CardContent className="p-6 space-y-4">
-              <p className="italic text-muted-foreground">
-                “I respect time. Once I promise, I deliver—whether I sleep 2
-                hours or 8. Privacy matters. Quality matters. Outcomes matter.”
-              </p>
-              <Separator />
-              <div className="flex flex-wrap items-center gap-3">
-                <Button asChild>
-                  <Link href="/hire-me">Work with Me</Link>
-                </Button>
-                <Button asChild variant="outline">
-                  <Link href="/contact">Message Me</Link>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="max-w-4xl mx-auto mt-12 ">
+            <Card className="dark:bg-black">
+              <CardContent className="p-6 space-y-4">
+                <p className="italic text-muted-foreground">
+                  “I respect time. Once I promise, I deliver—whether I sleep 2
+                  hours or 8. Privacy matters. Quality matters. Outcomes
+                  matter.”
+                </p>
+                <Separator />
+                <div className="flex flex-wrap items-center gap-4">
+                  <Button asChild>
+                    <Link href="/hire-me">Work with Me</Link>
+                  </Button>
+                  <Button asChild variant="outline">
+                    <Link href="/contact">Message Me</Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </motion.div>
       </section>
     </>
   );
