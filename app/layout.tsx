@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./components/themeProviders";
@@ -13,6 +13,12 @@ const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -24,12 +30,7 @@ export const metadata: Metadata = {
     default: "Mayur Pal | Software Engineering Student & Full Stack Developer",
     template: "%s | Mayur Pal",
   },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
-  },
+
   description:
     "Portfolio of Mayur Pal, a Software Engineering student passionate about Full Stack Development, DevOps, Web3, and SaaS. Explore projects, certifications, and experiences.",
   metadataBase: new URL("https://www.thissidemayur.me"),
