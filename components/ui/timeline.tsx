@@ -6,24 +6,26 @@ import {
   motion,
 } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
-import { Card, CardContent, CardDescription, CardTitle } from "./card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardTitle,
+} from "@/components/ui/card";
 
 interface TimelineEntry {
   title: string;
   content: React.ReactNode;
-  id: string;
+  id: number;
 }
-
 export const Timeline = ({
   data,
   title,
   description,
-  id,
 }: {
   data: TimelineEntry[];
   title?: string;
   description?: string;
-  id: string;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -58,7 +60,7 @@ export const Timeline = ({
         <div ref={ref} className="relative max-w-7xl mx-auto pb-10">
           {data.map((item) => (
             <div
-              key={item.id}
+              key={item.title}
               className="flex justify-start pt-10 md:pt-20 md:gap-10"
             >
               <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
