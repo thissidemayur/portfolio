@@ -80,12 +80,12 @@ const blogPosts: iBlogPost[] = [
   },
 ];
 
-interface BlogPageProps {
-  params: { blogId: string };
-}
-
-export default function BlogPage({ params }: BlogPageProps) {
-  const { blogId } = params;
+export default async function BlogPage({
+  params,
+}: {
+  params: Promise<{ blogId: string }>;
+}) {
+  const { blogId } = await params;
 
   const post = blogPosts.find((blog) => blog.slug === blogId);
 
