@@ -62,7 +62,7 @@ export default function Experience() {
 
       <div className="max-w-6xl mx-auto px-6 py-16 space-y-20">
         {/* Internships Section */}
-        <section>
+        {/*  <section>
           <h2 className="text-2xl font-bold mb-8">Internship</h2>
           <div className="grid gap-12">
             {Internships.map((intern, index) => (
@@ -73,7 +73,6 @@ export default function Experience() {
                 transition={{ duration: 0.6 }}
               >
                 <Card className="p-8 flex flex-col md:flex-row items-center gap-10 hover:shadow-xl transition rounded-2xl">
-                  {/* Certificate Image */}
                   <Link
                     href={intern.proofUrl ?? "/"}
                     target="_blank"
@@ -88,7 +87,6 @@ export default function Experience() {
                     />
                   </Link>
 
-                  {/* Text Details */}
                   <div className="w-full md:w-1/2">
                     <h3 className="text-2xl font-semibold">{intern.role}</h3>
                     <p className="text-muted-foreground">{intern.company}</p>
@@ -113,6 +111,7 @@ export default function Experience() {
             ))}
           </div>
         </section>
+        */}
 
         {/* Trainings Section */}
         <section>

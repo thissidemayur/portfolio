@@ -16,7 +16,12 @@ const nextConfig: NextConfig = {
       {
         hostname: "thissidemayur.me",
         protocol: "https",
-      }
+      },
+      {
+        hostname: "ik.imagekit.io",
+        protocol: "https",
+      },
+
 
     ]
   }
